@@ -1,0 +1,260 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cartita Para Adri</title>
+  <style>
+    body {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-shadow: #1e171a;
+      height: 100vh; /* Altura total de la ventana */
+  margin: 0;
+  background: linear-gradient(to top, #9418b7, #6b36e6);
+
+
+  margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    
+      overflow: hidden;
+      
+    }
+    .input-dots {
+      font-size: 2rem;
+      letter-spacing: 10px;
+      margin: 20px 0;
+    }
+
+     .keypad button {
+      width: 60px;
+      height: 60px;
+      margin: 10px;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 10px;
+      background: pink;
+      color: rgb(19, 19, 28);
+      cursor: pointer;
+    }
+
+
+
+     .flower {
+      position: absolute;
+      bottom: -100px; /* empieza debajo */
+      font-size: 2rem;
+      animation: floatUp 6s linear infinite;
+    }
+     @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+     .heart {
+      position: absolute;
+      top: -50px;
+      font-size: 2rem;
+      animation: fall 6s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+
+    button {
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  background: white;
+  font-size: 20px;
+  cursor: pointer;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+ .screen {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .active {
+      display: flex;
+    }
+    .password-screen {
+      flex-direction: column;
+    }
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+    .key {
+      background-color: #f8bbd0;
+      border: none;
+      border-radius: 10px;
+      font-size: 20px;
+      padding: 15px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .key:hover {
+      background-color: #f48fb1;
+    }
+    .input-display {
+      font-size: 24px;
+      margin-top: 20px;
+      letter-spacing: 8px;
+    }
+    .notepad {
+      background-color: #b5c0f8;
+      border: 3px solid #0a0809;
+      padding: 20px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      text-align: left;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      line-height: 1.6;
+   
+ 
+    }
+
+
+    .notepad h3 {
+      margin-top: 0;
+    }
+    
+  </style>
+</head>
+<body>
+   <!-- Corazones -->
+  <div class="heart" style="left: 10%;">❤</div>
+  <div class="heart" style="left: 30%;">💜</div>
+  <div class="heart" style="left: 50%;">💖</div>
+  <div class="heart" style="left: 70%;">💙</div>
+  <div class="heart" style="left: 90%;">💚</div>
+  <!-- Florecitas -->
+  <div class="flower" style="right: 10%;">🌸</div>
+  <div class="flower" style="left: 30%;">🌼</div>
+  <div class="flower" style="left: 50%;">🌺</div>
+  <div class="flower" style="left: 70%;">🌷</div>
+  <div class="flower" style="right: 90%;">🌹</div>
+
+
+<div id="passwordScreen" class="screen password-screen active">
+  <h2>🔑💻 Adivina la contraseña</h2>
+  <div class="input-display" id="inputDisplay">••••••</div>
+  <div class="keypad">
+    <button class="key" onclick="enterDigit('1')">1</button>
+    <button class="key" onclick="enterDigit('2')">2</button>
+    <button class="key" onclick="enterDigit('3')">3</button>
+    <button class="key" onclick="enterDigit('4')">4</button>
+    <button class="key" onclick="enterDigit('5')">5</button>
+    <button class="key" onclick="enterDigit('6')">6</button>
+    <button class="key" onclick="enterDigit('7')">7</button>
+    <button class="key" onclick="enterDigit('9')">9</button>
+    <button class="key" onclick="enterDigit('8')">8</button>
+    <div></div>
+  
+    <button class="key" onclick="enterDigit('0')">0</button>
+    
+    <div></div>
+  </div>
+</div>
+
+<div id="notepadScreen" class="screen">
+  <div class="notepad">
+    <h3>📅 13 de Septiembre 2025 </h3>
+    <h4>💝💌🌹 Para: Adri 🖤🖤🖤 </h4>
+    <p>
+      Hola Adri, quice hacerte esta pequeña cartita para decirte lo bonita que estas, ya te habia dicho lo bonito que son 
+      tus ojos y tu cabello, pero no esta demás recordartelo, bueno, en general todo de ti es hermoso, no olvidemos esos lunares 🖤
+      uff son preciosos, soy astronauta de cada uno de tus lunares. 
+    </p>
+    <p>
+      No se como le haces para que siempre te veas bonita, creo que eres una brujita, pero de esas brujitas bonitas de las peliculas jajaja
+      de verdad eres alguien cool, no se por que no nos hablamos antes, siempre estuviste ahí, siempre estuve ahí, pero nunca nos hablamos más alla del taller.
+
+    </p>
+    <p>
+      Pero pues ahora puedo conocerte más, me gusta saber de ti, algún día iremos a un Museo, comeremos enchiladas pero que sean verdes, comeremos mago juntos jaja y 
+      espero poder bailar contigo.🖤🖤🖤🖤🖤🖤
+    </p>
+    <p>
+      Perdón por hacerte esperar. ♡
+    </p>
+  </div>
+</div>
+
+<script>
+  function pressNum(num) {
+      if (password.length < 6) {
+        password += num;
+        display.textContent = "•".repeat(password.length);
+      }
+      if (password.length === correctPassword.length) {
+        if (password === correctPassword) {
+          alert("🎉 ¡Contraseña correcta!");
+        } else {
+          alert("❌ Contraseña incorrecta");
+        }
+        // Reinicia
+        password = "";
+        display.textContent = "";
+      }
+    }
+  const correctPassword = '171106';
+  let input = '';
+
+  function enterDigit(digit) {
+    if (input.length < 6) {
+      input += digit;
+    }
+
+    const display = document.getElementById('inputDisplay');
+    display.textContent = input.padEnd(6, '•');
+
+    if (input.length === 6) {
+      if (input === correctPassword) {
+        document.getElementById('passwordScreen').classList.remove('active');
+        document.getElementById('notepadScreen').classList.add('active');
+      } else {
+        alert('Incorrecto, intentalo de nuevo Adri');
+        input = '';
+        display.textContent = '••••••';
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
